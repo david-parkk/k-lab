@@ -1,16 +1,32 @@
 <template>
-    {{name}}
-
+    <div id="category_name">
+      {{name}}
+    </div>  
+    <div id="img_div">
+      <img src="/img/k-pop.png" alt="">
+    </div>
     <ul>
         <li v-for="(category, key) in challenge" :key="key" class="challenge" @click="send_router(key)">
-          
-          <ul>
-            <li v-for="(value, key2) in category" :key="value">
-              {{key2}} {{ value }}
-
-            </li>
-          </ul>
-          <hr>
+          <div class="challenge">
+            <div class="subject">
+              # {{ category.subject }}
+            </div>
+            <div class="item">
+              <img src="/img/like.png" alt="">
+              {{ category.like_count }}
+            </div>
+            <div class="item">
+              <img src="/img/star.png" alt="">
+              {{ category.rate }}
+            </div>
+            <div class="item">
+              <img src="/img/view.png" alt="">
+              {{ category.views }}
+            </div>
+            <br>    
+           
+          </div>
+        
         </li>
         
       </ul>
@@ -20,7 +36,6 @@
 
 <script>
 import {view_challenge} from '../api/category.js'
-import {check} from '../api/check_login'
 export default {
   data(){
     return{
@@ -34,9 +49,7 @@ export default {
     console.log(key);
     
     try{
-      check().then((array)=>{
-        console.log(array);
-      }),
+     
       view_challenge().then((array)=>{
           
           console.log(array);
@@ -67,3 +80,9 @@ export default {
 };
 
 </script>
+
+<style>
+@import "../assets/css/CategoryView.css";
+
+
+</style>
