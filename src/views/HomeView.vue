@@ -2,24 +2,32 @@
   <div class="home">
     
     
-    <h2> 댄스첼린지 </h2>
-    <div id="dance_challenge">
+    <div class="h2">
+       댄스첼린지 
+    </div>
+    <div id="dance_challenge" class="challenge_box">
       <ul>
-        <li v-for="(category, key) in dance_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <h3>{{ key }}</h3>
-          <ul>
+        <li v-for="(category, key,index) in dance_category" :key="key" class="challenge_category"   @click="send_router(key)">
+          <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/dance${index}.png)` }">
+          <div class="category_name">
+            {{ key }}
+          </div>
+          <ul class="challenge_value">
             <li v-for="value in category" :key="value">
               {{ value }}
             </li>
           </ul>
+          </div>
         </li>
       </ul>
     </div>
-    <h2> 공익성 첼린지 </h2>
-    <div id="public_interest_challenge">
+    <div class="h2">
+       공익성 첼린지 
+    </div>
+    <div id="public_interest_challenge" class="challenge_box">
       <ul>
         <li v-for="(category, key) in morality_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <h3>{{ key }}</h3>
+          <div class="challenge_category">{{ key }}</div>
           <ul>
             <li v-for="value in category" :key="value">
               {{ value }}
@@ -30,24 +38,28 @@
      
       
     </div>
-    <h2> 유희성 첼린지 </h2>
-    <div id="amusement_challenge">
+    <div class="h2">
+       유희성 첼린지 
+    </div>
+    <div id="amusement_challenge" class="challenge_box">
       <ul>
         <li v-for="(category, key) in fun_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <h3>{{ key }}</h3>
+          <div class="challenge_category">{{ key }}</div>
           <ul>
             <li v-for="value in category" :key="value">
-              {{ value }}
+              <div class="">{{ value }}</div>
             </li>
           </ul>
         </li>
       </ul>
     </div>
-    <h2> 위험성 첼린지 </h2>
+    <div class="h2">
+       위험성 첼린지 
+    </div>
     <div id="amusement_challenge">
       <ul>
         <li v-for="(category, key) in danger_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <h3>{{ key }}</h3>
+          <div class="challenge_category">{{ key }}</div>
           <ul>
             <li v-for="value in category" :key="value">
               {{ value }}
@@ -56,11 +68,13 @@
         </li>
       </ul>
     </div>
-    <h2> 기타 첼린지 </h2>
+    <div class="h2">
+       기타 첼린지 
+    </div>
     <div id="other_challenge">
       <ul>
         <li v-for="(category, key) in other_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <h3>{{ key }}</h3>
+          <div class="challenge_category">{{ key }}</div>
           <ul>
             <li v-for="value in category" :key="value">
               {{ value }}
@@ -139,8 +153,6 @@ export default{
 }
 </script>
 <style>
-.challenge_category{
-  display: inline-block;
-  margin: 10px;
-}
+@import "../assets/css/HomeView.css";
+
 </style>

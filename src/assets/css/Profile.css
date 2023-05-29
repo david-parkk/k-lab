@@ -63,18 +63,18 @@ button{
 }
 #profile_div1{
     padding: 150px 0 0 0;
-    background-image: url(../img/profile_rectangle1.png);
+    background-image: url(../../../public/img/profile_rectangle1.png);
     height: 500px;
 }
 #profile_div2{
     height: 450px;
     width: 395px;
-    background-image: url(../img/profile_rectangle2.png);
+    background-image: url(../../../public/img/profile_rectangle2.png);
     padding: 170px 0 0 0;
     
 }
 #logout_button{
-    background-image: url(../img/logout.png);
+    background-image: url(../../../public/img/logout.png);
     height: 51px;
     width:128px;
     margin: 0 auto;
@@ -92,7 +92,7 @@ button{
     margin: 0 0 0 70px;
 }
 #back{
-    background-image: url(../img/back.png);
+    background-image: url(../../../public/img/back.png);
     display: inline-block;
     width: 16px;
     height: 16px;

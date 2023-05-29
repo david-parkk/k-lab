@@ -1,12 +1,21 @@
 <template>
-  {{ subject }} 
-  <hr> 
-  {{ content }}
+  <div id="subject">
+    {{ subject }} 
+  </div>
   <hr>
-  {{ address }}
-
+  <div id="content">
+  {{ content }}
+  </div>
+  <hr>
+  
+  <div id="URL_text"> 
+    URL
+  </div>
+  <div id="address" >
+    <a :href="address" target="_blank">{{ address }}</a>
+  </div>
+  <hr>
 </template>
-
 <script>
 import {view_challenge_detail} from '../api/challenge.js'
 export default {
@@ -37,3 +46,9 @@ export default {
     
 }
 </script>
+
+<style>
+@import "../assets/css/ChallengeView.css";
+
+
+</style>
