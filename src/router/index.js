@@ -4,7 +4,11 @@ import ProfileView from '../views/ProfileView.vue'
 import CommuView from '../views/CommuView.vue'
 import CategoryView from '../views/CategoryView.vue'
 import ChallengeView from '../views/ChallengeView.vue'
-import RankingView from '../views/RankingView'
+
+import PostView from '../views/PostView.vue'
+
+
+
 const routes = [
   {
     path: '/',
@@ -37,7 +41,13 @@ const routes = [
     path: '/challenge',
     name: 'challenge',
     component: ChallengeView
-  }
+  },
+  {
+    path: '/community/post/:id',
+    name: 'PostView',
+    component: PostView,
+    props: true
+  },
  
 ]
 
