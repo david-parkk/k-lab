@@ -3,8 +3,10 @@
     <ul id="v-for-object" class="demo">
       <li v-for="value in commentList" :key="value">
         <div id="posts">
-            <div>{{ value.content }}</div>
-            <div>{{ value.user}}</div>
+            <br>
+            <div id="post-content">{{ value.content }}</div>
+            <!-- <div>{{ value.user}}</div> -->
+            <br>
           <hr>
         </div>
       </li>

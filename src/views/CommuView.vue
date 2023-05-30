@@ -1,6 +1,5 @@
 <template>
     <div class="community">
-      <h1>board</h1>
       <BoardPage />
       
     </div>
@@ -20,6 +19,3 @@
   }
 </script>
 
-<style>
-@import "../assets/css/CommuView.css";
-</style>
