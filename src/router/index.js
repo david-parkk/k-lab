@@ -15,12 +15,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
-  {
-    path: '/rank',
-    name: 'rank',
-    component: RankingView
-  },
-  
+    
   {
     path: '/profile',
     name: 'profile',

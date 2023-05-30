@@ -19,6 +19,7 @@ const store=createStore({
       return state.token;
     },
     get_age(state){
+      
       return state.age;
     }
   },

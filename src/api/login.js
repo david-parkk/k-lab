@@ -11,8 +11,9 @@ async function login_user(userData) {
     console.log(data);
     if (data) {
       store.commit('signin', data.access_token);
-      store.commit('set_id', userData.nickname);
-      store.commit('set_age', userData.age);
+      store.commit('set_id', data.nickname);
+      console.log("age",data.age)
+      store.commit('set_age', data.age);
       
     } else {
       console.log('failed');
