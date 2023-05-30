@@ -1,7 +1,7 @@
 # k-lab_front
 ## Rule
+### $`\textcolor{red}{\text{main branch commit X -> other branch }}`$ 
 
-### main branch commit X -> other branch
 ### Commit message 구조
 ```
 <type>: <subject>
