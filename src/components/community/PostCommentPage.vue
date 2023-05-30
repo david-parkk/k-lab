@@ -1,11 +1,11 @@
 <template>
-    <div>
-      <h2>댓글 달기</h2>
-      <textarea v-model="comment" ></textarea>
-      <button @click="post_comment_page">게시</button>
-      <div>{{ this.board }}</div>
+    <div id="writecommentdiv">
+      <textarea id="comment-text" v-model="comment" ></textarea>
+      <br>
+      <button id="submitcomment" @click="post_comment_page">게시</button>
+      <!-- <div>{{ this.board }}</div>
       <div>{{ this.userid }}</div>
-      <div>{{ this.content }}</div>
+      <div>{{ this.content }}</div> -->
     </div>
   </template>
   
@@ -46,7 +46,7 @@
           }
           console.log(post_data);
           post_comment(post_data);
-    
+          this.$router.go(0);
         }
       }
     }

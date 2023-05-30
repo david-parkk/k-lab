@@ -1,15 +1,30 @@
 <template>
   <div>
     <h2>글쓰기</h2>
-    <div><input  type="text" v-model="title"></div>
-    <textarea v-model="content" ></textarea>
-    <button @click="post_page">게시</button>
-    <div>{{ title }}</div>
+    <div>
+      <input id="content-title" type="text" v-model="title" :placeholder="titlePlaceholder" @focus="hidePlaceholder" @blur="showPlaceholder">
+    </div>
+    <br>
+    <textarea id="content-text" v-model="content" placeholder="내용을 입력하세요"></textarea>
+    <button id="writecomment" @click="post_page">게시</button>
+    <!-- <div>{{ title }}</div>
     <div>{{ content }}</div>
-    <div>{{ userid }}</div>
+    <div>{{ userid }}</div> -->
   </div>
 </template>
 
+<style>
+input.transparent-text::placeholder,
+textarea.transparent-text::placeholder {
+  opacity: 0.5;
+  color: #000;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  opacity: 0;
+}
+</style>
 
 <script>
 import {post_content }from "../../api/viewapi"
@@ -22,7 +37,8 @@ import Store from '../../api/store.js';
         title: "",
         content:"",
         
-        userid:"1"
+        userid:"1",
+        showTitlePlaceholder: true
       }
     },
     name: 'BoardPage',
@@ -35,7 +51,20 @@ import Store from '../../api/store.js';
             console.log(error);
         }
     },
+    computed: {
+    titlePlaceholder() {
+      return this.showTitlePlaceholder ? "제목" : "";
+    }
+  },
     methods:{
+      hidePlaceholder() {
+      this.showTitlePlaceholder = false;
+    },
+    showPlaceholder() {
+      if (this.title === "") {
+        this.showTitlePlaceholder = true;
+      }
+    },
       post_page(){
         const post_data={
           title: this.title,
@@ -47,6 +76,7 @@ import Store from '../../api/store.js';
         post_content(post_data);
         location.replace('../community');
       }
+      
     }
   }
 </script>
