@@ -50,6 +50,7 @@ const store=createStore({
       set_cookie_id(value);
     },
     set_age(state,age){
+      console.log("store: ",age);
       state.age=age;
       set_cookie_age(age);
     }

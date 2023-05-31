@@ -12,7 +12,7 @@
     URL
   </div>
   <div id="address" >
-    <a :href="address" target="_blank">{{ address }}</a>
+    <a :href="address" target="_blank">{{ address }} 11</a>
   </div>
   <hr>
 </template>
