@@ -12,5 +12,16 @@ async function view_home(){
 
 
 }
+async function view_home_detail(){
+    try {
+        const res = await axios.get('home/smallcategory/',{baseURL: instance.defaults.baseURL});
+        return res.data;
+    } catch (error){
+        console.log(error);
+        throw error
+    }
 
-export {view_home}
+
+}
+
+export {view_home,view_home_detail}

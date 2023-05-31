@@ -26,13 +26,17 @@
     </div>
     <div id="public_interest_challenge" class="challenge_box">
       <ul>
-        <li v-for="(category, key) in morality_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <div class="challenge_category">{{ key }}</div>
-          <ul>
+        <li v-for="(category, key,index) in morality_category" :key="key" class="challenge_category"   @click="send_router(key)">
+          <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/morality${index}.png)` }">
+          <div class="category_name">
+            {{ key }}
+          </div>
+          <ul class="challenge_value">
             <li v-for="value in category" :key="value">
               {{ value }}
             </li>
           </ul>
+          </div>
         </li>
       </ul>
      
@@ -43,13 +47,17 @@
     </div>
     <div id="amusement_challenge" class="challenge_box">
       <ul>
-        <li v-for="(category, key) in fun_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <div class="challenge_category">{{ key }}</div>
-          <ul>
+        <li v-for="(category, key,index) in fun_category" :key="key" class="challenge_category"   @click="send_router(key)">
+          <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/fun${index}.png)` }">
+          <div class="category_name">
+            {{ key }}
+          </div>
+          <ul class="challenge_value">
             <li v-for="value in category" :key="value">
-              <div class="">{{ value }}</div>
+              {{ value }}
             </li>
           </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -58,13 +66,17 @@
     </div>
     <div id="amusement_challenge">
       <ul>
-        <li v-for="(category, key) in danger_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <div class="challenge_category">{{ key }}</div>
-          <ul>
+        <li v-for="(category, key,index) in danger_category" :key="key" class="challenge_category"   @click="send_router(key)">
+          <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/dance${index}.png)` }">
+          <div class="category_name">
+            {{ key }}
+          </div>
+          <ul class="challenge_value">
             <li v-for="value in category" :key="value">
               {{ value }}
             </li>
           </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -73,13 +85,17 @@
     </div>
     <div id="other_challenge">
       <ul>
-        <li v-for="(category, key) in other_category" :key="key" class="challenge_category" @click="send_router(key)">
-          <div class="challenge_category">{{ key }}</div>
-          <ul>
+        <li v-for="(category, key,index) in other_category" :key="key" class="challenge_category"   @click="send_router(key)">
+          <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/dance${index}.png)` }">
+          <div class="category_name">
+            {{ key }}
+          </div>
+          <ul class="challenge_value">
             <li v-for="value in category" :key="value">
               {{ value }}
             </li>
           </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -88,28 +104,28 @@
 </template>
 
 <script>
-import {view_home} from '../api/homeapi.js'
+import {view_home,view_home_detail} from '../api/homeapi.js'
 // @ is an alias to /src
 export default{
   data(){
     return{
-      dance_category: {"k-pop":[],"j-pop":[],"pop":[]},
-      morality_category:{"기부 켐페인":[],"코로나 19":[]},
-      fun_category:{"동물":[],"핑거 스냅":[]},
-      danger_category:{"기물파손":[]},
-      other_category:{"other":[]}
+      
+      dance_category: {"k-pop":[],"j-pop":["adsf"],"pop":["Asdfaf"]},
+      morality_category:{"기부 켐페인":["asdfadf"],"코로나 19":["asdfafd"]},
+      fun_category:{"동물":["유기견보호","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ"],"핑거 스냅":["asdfa"]},
+      danger_category:{"위험성":["asdfasdf"]},
+      other_category:{"기타":["adsafsd"]}
     }
   },
   async mounted(){
     try{
         view_home().then((array)=>{
-        for(var i=0;i<array.length;i++){
-          //console.log(array[i]);
-          console.log(array[i]["Bigcategory"]);
-
-          console.log(array[i]["smallcategory"]);
-          console.log("asdf");
-          
+        for(var i=0;(i<array.length&&i<3);i++){
+          if(array[i]["rate"]<7){
+            if (Object.prototype.hasOwnProperty.call(this.dance_category, array[i]["smallcategory"])) {
+              this.dance_category["위험성"].push(array[i]['subject']);
+            }
+          }
           if(array[i]["Bigcategory"].includes('댄스')){
             if (Object.prototype.hasOwnProperty.call(this.dance_category, array[i]["smallcategory"])) {
               this.dance_category[array[i]["smallcategory"]].push(array[i]['subject']);
@@ -125,18 +141,23 @@ export default{
               this.fun_category[array[i]["smallcategory"]].push(array[i]['subject']);
             }
           }
-          else if(array[i]["Bigcategory"].includes('위험')){
-            if (Object.prototype.hasOwnProperty.call(this.danger_category, array[i]["smallcategory"])) {
-              this.danger_category[array[i]["smallcategory"]].push(array[i]['subject']);
-            }
-          }
+
           else{
             this.other_category["other"].push(array[i]["smallcategory"]);
           }
-         
+          
         }
-        console.log(this.dance_category)
       })
+      view_home_detail().then((data)=>{
+            const array=data.data
+            for(var i=0;i<array.length;i++){
+              if(array[i]["rate"]<7){
+                if (Object.prototype.hasOwnProperty.call(this.danger_category, array[i]["smallcategory"])) {
+                  this.danger_category["위험성"].push(array[i]['subject']);
+                }
+              }
+            }
+          })
       
     } catch(error){
       console.log(error);

@@ -3,7 +3,7 @@ import instance from "./axiosapi"
 async function check_login(token){
     try{
         console.log("tokne: ",token);
-        const res = await axios.get('/check/', userData, 
+        const res = await axios.get('/check/', token, 
         { baseURL: instance.defaults.baseURL,
             headers:{
                 tokenkey: token
