@@ -6,7 +6,7 @@
     </div>
     <br>
     <textarea id="content-text" v-model="content" placeholder="내용을 입력하세요"></textarea>
-    <button id="writecomment" @click="post_page">게시</button>
+    <button id="writecomment"  @click="post_page">게시</button>
     <!-- <div>{{ title }}</div>
     <div>{{ content }}</div>
     <div>{{ userid }}</div> -->

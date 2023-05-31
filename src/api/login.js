@@ -9,14 +9,13 @@ async function login_user(userData) {
     const data = res.data;
     console.log("로그인 성공");
     console.log(data);
-    if (data) {
+    if (data.access_token) {
       store.commit('signin', data.access_token);
-      store.commit('set_id', userData.nickname);
-      store.commit('set_age', userData.age);
-      
+      //store.commit('set_id', data.nickname);
+      //console.log("age",data.age)
+      //store.commit('set_age', data.age);
     } else {
       console.log('failed');
-      
     }
   } catch (error) {
     console.log(error);
@@ -41,17 +40,30 @@ function register_user(userData) {
   })
   console.log("비동기 실행중");
 }
-function check_user(token){
-  axios.get('/check/', token, { baseURL: instance.defaults.baseURL})
-  .then((res)=>{
-    //토큰
-    return res;
-  })
-  .catch((error)=>{
-    console.log(error);
-  })
+async function check_user(token){
+  try{
+      const res = await axios.get('/check/', 
+      { baseURL: instance.defaults.baseURL,
+          headers:{
+              tokenkey: token
+          }
+      });
+
+      store.commit('set_id', res.nickname);
+      store.commit('set_age', res.age);
+      return res.data;
+  } catch (error) {
+      console.log(error);
+  }
+
+
 }
-function logout(){
-  store.commit('logout')
+async function logout(){
+  try {
+    store.commit('logout')
+  }
+  catch (error) {
+    console.log(error);
+  }
 }
 export {login_user,register_user,check_user,logout};

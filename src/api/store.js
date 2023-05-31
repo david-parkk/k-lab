@@ -19,6 +19,7 @@ const store=createStore({
       return state.token;
     },
     get_age(state){
+      
       return state.age;
     }
   },
@@ -49,6 +50,7 @@ const store=createStore({
       set_cookie_id(value);
     },
     set_age(state,age){
+      console.log("store: ",age);
       state.age=age;
       set_cookie_age(age);
     }

@@ -69,6 +69,7 @@
   
   <script>
   import {login_user,register_user,check_user,logout}from '../api/login.js';
+  //import {check_login} from '../api/check_login.js'
   import Store from '../api/store.js';
   export default {
     data() {
@@ -81,25 +82,39 @@
         };
     },
     name: 'ProfileView',
-    mounted(){
+    async mounted(){
+        try{
         Store.commit('checktoken')
         this.is_loggin=Store.getters.get_login;
         this.nickname=Store.getters.get_nickname;
         this.age=Store.getters.get_age;
-        check_user(Store.getters.get_token)
+        const check=await check_user(Store.getters.get_token)
+        if(check){
+            this.is_loggin=true;
+            console.log("check: ",check);
+            this.nickname=check["nickname"]
+            this.age=check["age"]
+            console.log("token",Store.getters.get_token);
+        }
+        
+        
+        } catch (error) {
+            console.log(error);
+        }
     },
     methods: {
-        post_signin() {
+        async post_signin() {
             const credentials = {
                 nickname: this.nickname,
                 password: this.password,
-              
             };
-            login_user(credentials);
-                      
-            this.is_loggin  =!this.is_loggin;
-            
+
+            await login_user(credentials);
+            //this.is_loggin = !this.is_loggin;
+            this.age = Store.getters.get_age;         
+            location.reload();
         },
+
         post_signup(){
             const credentials = {
                 nickname: this.nickname,
@@ -111,11 +126,12 @@
             this.is_loggin="";
             this.age="";
             register_user(credentials); 
+            location.reload();
         },
-        post_logout(){
-            logout();
+        async post_logout(){
+            await logout();
             this.is_loggin=!this.is_loggin;
-            return 0;
+            location.reload();
         }
 
     },
