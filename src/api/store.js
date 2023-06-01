@@ -16,6 +16,7 @@ const store=createStore({
       return state.nickname;
     },
     get_token(state){
+      console.log("get token ",state.token)
       return state.token;
     },
     get_age(state){
