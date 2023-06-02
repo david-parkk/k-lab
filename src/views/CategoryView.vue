@@ -3,10 +3,10 @@
       {{name}}
     </div>  
     <div id="img_div">
-      <img src="/img/k-pop.png" alt="">
+      <img :src="`/img/category/${name}.png`" :alt="`/img/category/${name}.jpg`" onerror="this.src = this.alt">
     </div>
     <ul>
-        <li v-for="(category, key) in challenge" :key="key" class="challenge" @click="send_router(key)">
+        <li v-for="(category, key) in challenge" :key="key" class="challenge1" @click="send_router(key)">
           <div class="challenge">
             <div class="subject">
               # {{ category.subject }}
