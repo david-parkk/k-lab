@@ -72,7 +72,7 @@ export default {
         "nickname": username,
         "rate": rate
       }
-      console.log("key: ",username)
+      console.log("data: ",data)
       push_rate(this.name,data);
       }catch(error){
         console.log(error)

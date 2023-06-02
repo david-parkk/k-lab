@@ -4,7 +4,7 @@ import ProfileView from '../views/ProfileView.vue'
 import CommuView from '../views/CommuView.vue'
 import CategoryView from '../views/CategoryView.vue'
 import ChallengeView from '../views/ChallengeView.vue'
-
+import DangerCategoryView from '../views/DangerCategoryView.vue'
 import PostView from '../views/PostView.vue'
 
 
@@ -30,6 +30,11 @@ const routes = [
     path: '/category',
     name: 'category',
     component: CategoryView
+  },
+  {
+    path: '/dangercategory',
+    name: 'dangercategory',
+    component: DangerCategoryView
   },
   {
     path: '/challenge',

@@ -9,17 +9,16 @@
 }
 
 .challenge_box{
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 230px;
     
     overflow: scroll;
     color: #112031;
     border: none;
     
      /* 가로 스크롤 */
-    overflow: auto;
-    white-space: nowrap;
-    overflow-x:scroll;
+     overflow-x: auto;
+     white-space: nowrap;
 }
 .challenge_value li{
     
@@ -42,7 +41,7 @@
 }
 ul {
     list-style-type: none;
-    height: 250px;
+    
     
     
 }

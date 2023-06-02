@@ -66,7 +66,7 @@
     </div>
     <div id="amusement_challenge">
       <ul>
-        <li v-for="(category, key,index) in danger_category" :key="key" class="challenge_category"   @click="send_router(key)">
+        <li v-for="(category, key,index) in danger_category" :key="key" class="challenge_category"   @click="send_danger_router(key)">
           <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/dance${index}.png)` }">
           <div class="category_name">
             {{ key }}
@@ -111,9 +111,9 @@ export default{
     return{
       
       dance_category: {"k-pop":[],"j-pop":["adsf"],"pop":["Asdfaf"]},
-      morality_category:{"기부 켐페인":["asdfadf"],"코로나 19":["asdfafd"]},
-      fun_category:{"동물":["유기견보호","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ"],"핑거 스냅":["asdfa"]},
-      danger_category:{"위험성":["asdfasdf"]},
+      morality_category:{"donation":["asdfadf"],"covid":["asdfafd"]},
+      fun_category:{"pet":["유기견보호","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ"],"finger":["asdfa"]},
+      danger_category:{"danger":["asdfasdf"]},
       other_category:{"기타":["adsafsd"]}
     }
   },
@@ -169,7 +169,14 @@ export default{
       console.log(key);
       this.$router.push({ path: 'category', query: { key }})
       //this.$router.push({ name: 'CategoryDetail', params: { key } });
-    }
+    },
+    
+    send_danger_router(key){
+      console.log("key")
+      console.log(key);
+      this.$router.push({ path: 'dangercategory', query: { key }})
+      //this.$router.push({ name: 'CategoryDetail', params: { key } });
+    },
   }
 }
 </script>
