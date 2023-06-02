@@ -1,0 +1,26 @@
+#banner{
+    background-image: url(../../../public/img/banner.png);
+    height: 53px;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+}
+.index{
+    height: 20px;
+    text-align: center;
+    font-weight: bold;
+    color:white;
+}
+.challenge{
+    background-image: url(../../../public/img/rankingbar.png);
+    margin: 20px;
+    text-align: center;
+    border: solid 0.5px black;
+    border-radius: 32px;
+}
+.item{
+    float:none;
+    margin: 0 auto;
+}
