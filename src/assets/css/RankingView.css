@@ -13,14 +13,27 @@
     font-weight: bold;
     color:white;
 }
-.challenge{
+.rank_challenge{
     background-image: url(../../../public/img/rankingbar.png);
     margin: 20px;
     text-align: center;
     border: solid 0.5px black;
     border-radius: 32px;
 }
-.item{
+.item2{
     float:none;
     margin: 0 auto;
+}
+#sortbar{
+    background-image: url(../../../public/img/sortbar.png);
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-left: 5px;
+}
+#sortstatus{
+    margin-left: 30px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px;
 }
