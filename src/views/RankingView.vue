@@ -1,6 +1,6 @@
 <template>
   <div id="banner">
-    실시간 인기 첼린지  
+    Challenge Ranking
   </div>
     <hr>
   <div>
@@ -19,8 +19,12 @@
           <div class="item2">
           <img src="/img/heart.png" alt="">
           {{ category.like_count }}
+          <img src="/img/star.png" alt="">
+          {{ category.rate }} 
+          <img src="/img/view2.png" alt="">
+          {{category.views}}
           </div>
-          별점 {{ category.rate }} 조회수{{category.views}}
+          
           <br>    
       
       </div>
