@@ -28,10 +28,10 @@
 
 
 
-| frontend | frontend |
-| :---------------------------------------------: |:---------------------------------------------: |
-| <img src="https://avatars.githubusercontent.com/david-parkk" width=200px alt="박지원"/> |<img src="https://avatars.githubusercontent.com/leemsh" width=200px alt="임상혁"/> |
-|                            [박지원](https://github.com/david-parkk)                            |                            [임상혁](https://github.com/leemsh)                            |
+| frontend | frontend |designer|
+| :---------------------------------------------: |:---------------------------------------------: |:---------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/david-parkk" width=200px alt="박지원"/> |<img src="https://avatars.githubusercontent.com/leemsh" width=200px alt="임상혁"/> |<img src="https://avatars.githubusercontent.com/hxezu" width=200px alt="현혜주"/> |
+|                            [박지원](https://github.com/david-parkk)                            |                            [임상혁](https://github.com/leemsh)                            |                            [현혜주](https://github.com/hxezu)                            |
 ## Rule
 ### $`\textcolor{red}{\text{main branch commit X -> other branch }}`$ 
 
