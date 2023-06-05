@@ -10,7 +10,7 @@
 
 .challenge_box{
     width: 400px;
-    height: 230px;
+    height: 330px;
     
     overflow: scroll;
     color: #112031;
@@ -21,10 +21,13 @@
      white-space: nowrap;
 }
 .challenge_value li{
-    
+    float: left;
     font-size: 3px;
     margin: 5px;
     display:inline-block  ;
+}
+.challenge_value{
+    display: block;
 }
 .challenge_category{
     

@@ -3,7 +3,7 @@
     
     
     <div class="h2">
-       댄스첼린지 
+       Dance Challenge
     </div>
     <div id="dance_challenge" class="challenge_box">
       <ul>
@@ -22,7 +22,7 @@
       </ul>
     </div>
     <div class="h2">
-       공익성 첼린지 
+       Charity Challenge
     </div>
     <div id="public_interest_challenge" class="challenge_box">
       <ul>
@@ -43,7 +43,7 @@
       
     </div>
     <div class="h2">
-       유희성 첼린지 
+      Fun Challenge
     </div>
     <div id="amusement_challenge" class="challenge_box">
       <ul>
@@ -63,12 +63,12 @@
     </div>
     <div v-if="adult">
       <div class="h2">
-        위험성 첼린지 
+        Dangerous Challenge
       </div>
       <div id="amusement_challenge">
         <ul>
           <li v-for="(category, key,index) in danger_category" :key="key" class="challenge_category"   @click="send_danger_router(key)">
-            <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/dance${index}.png)` }">
+            <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/danger${index}.png)` }">
             <div class="category_name">
               {{ key }}
             </div>
@@ -83,12 +83,12 @@
     </div>
     </div>
     <div class="h2">
-       기타 첼린지 
+       ETC 
     </div>
     <div id="other_challenge">
       <ul>
         <li v-for="(category, key,index) in other_category" :key="key" class="challenge_category"   @click="send_router(key)">
-          <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/dance${index}.png)` }">
+          <div :class="['challenge_boxin', `dance-${index}`]" :style="{ backgroundImage: `url(/img/other${index}.png)` }">
           <div class="category_name">
             {{ key }}
           </div>
@@ -113,12 +113,13 @@ import Store from '../api/store.js';
 export default{
   data(){
     return{
+      login:false,
       adult:false,
       dance_category: {"K-POP":[],"J-POP":[],"POP":[]},
       morality_category:{"donation":[],"covid":[]},
-      fun_category:{"pet":["유기견보호","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ","ㅁㄴㅇㄹ"],"finger":["asdfa"]},
-      danger_category:{"danger":["asdfasdf"]},
-      other_category:{"기타":["adsafsd"]}
+      fun_category:{"pet":[],"finger":[]},
+      danger_category:{"danger":[]},
+      other_category:{"기타":[]}
     }
   },
   async mounted(){
@@ -126,6 +127,9 @@ export default{
         Store.commit('checktoken')  
         const check=await check_user(Store.getters.get_token)
         console.log("check",check)
+        if(check){
+          this.login=true;
+        }
         if(check.age>=20){
           this.adult=true;
         }
@@ -189,7 +193,10 @@ export default{
     send_router(key){
       console.log("key")
       console.log(key);
-      this.$router.push({ path: 'category', query: { key }})
+      console.log("thislogin",this.login);
+      if(this.login){
+        this.$router.push({ path: 'category', query: { key }})
+      }
       //this.$router.push({ name: 'CategoryDetail', params: { key } });
     },
     
